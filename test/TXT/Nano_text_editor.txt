@@ -1,0 +1,2 @@
+hi there this is Nano. terminal-based text-editor
+terminal-based editor like vim or nano
