@@ -1,0 +1,26 @@
+As with any other language, loops are very convenient. With Bash you can use for
+loops, while loops, and until loops.
+50For loops
+Here is the structure of a for loop:
+for var in ${list}
+do
+your_commands
+done
+Example:
+#!/bin/bash
+users="devdojo bobby tony"
+for user in ${users}
+do
+echo "${user}"
+done
+A quick rundown of the example:
+First, we specify a list of users and store the value in a variable called $users.
+After that, we start our for loop with the for keyword.
+Then we define a new variable which would represent each item from the list
+that we give. In our case, we define a variable called user, which would
+represent each user from the $users variable.
+Then we specify the in keyword followed by our list that we will loop through.
+On the next line, we use the do keyword, which indicates what we will do for
+each iteration of the loop.
+Then we specify the commands that we want to run.
+Finally, we close the loop with the done keyword.

@@ -1,0 +1,700 @@
+তুমি একদম সঠিক জায়গায় আছো! ✅
+তুমি যেহেতু **Bash scripting-এর fundamentals** (variables, input/output, conditionals, loops, functions ইত্যাদি) already শিখে ফেলেছো, এখন সময় হয়েছে **বাস্তব জীবনের সমস্যা** সমাধান করে প্র্যাকটিস করার — এটাই তোমার শেখা জিনিসগুলোকে কাজে লাগিয়ে **automation এবং system-level task handling** শেখার সেরা সময়।
+
+---
+
+## 🔧 এখন কী করবো? → ব্যাবহারিকভাবে Bash দিয়ে কী কী করা যায়?
+
+### 🔥 ১. **System Automation (Linux Admin এর কাজ automate করা)**
+
+* ✅ প্রতি দিন/সপ্তাহে অটোমেটিক ফাইল ব্যাকআপ করা
+* ✅ ফোল্ডার সাইজ দেখা, বেশি স্পেস নিচ্ছে এমন ফাইল খুঁজে ডিলিট করা
+* ✅ অপ্রয়োজনীয় `.log`, `.tmp` ফাইল ডিলিট করে ডিভাইস ক্লিন করা
+* ✅ USB বা External HDD connect হলে অটো ফাইল কপি করা
+* ✅ Crontab দিয়ে নির্দিষ্ট সময় পরপর task চলানো
+
+---
+
+### 📂 ২. **File ও Folder Management Automation**
+
+* ✅ নির্দিষ্ট extension এর ফাইল গুলো আলাদা ফোল্ডারে সরানো (e.g., `.jpg`, `.mp4`)
+* ✅ পুরোনো (30 দিন আগের) ফাইলগুলো archive বা ডিলিট করা
+* ✅ ফাইল নাম পরিবর্তন করা (batch rename) → e.g., `file1.txt` → `2025-08-05-file1.txt`
+
+---
+
+### 🛠️ ৩. **Text Processing এবং Log Analysis**
+
+* ✅ `.log` ফাইল থেকে নির্দিষ্ট keyword (error, warning) খুঁজে বের করা
+* ✅ CSV ফাইল থেকে ডেটা ফিল্টার বা পার্স করা
+* ✅ Multiple `.txt` ফাইলকে একত্র করে report তৈরি করা
+
+---
+
+### 🌐 ৪. **Networking ও Web Automation**
+
+* ✅ `ping` করে নেটওয়ার্ক alive কিনা তা চেক করা
+* ✅ `curl` বা `wget` দিয়ে ওয়েবসাইট থেকে ফাইল নামানো
+* ✅ ওয়েবসাইট ডাউন হলে মেইল বা notification পাঠানো (advanced)
+
+---
+
+### 👤 ৫. **User ও System Info Gathering**
+
+* ✅ কোন ইউজার online আছে দেখা
+* ✅ system এর uptime, RAM, CPU usage দেখা ও রিপোর্ট করা
+* ✅ new user add করা বা shell access দেওয়া (root access থাকলে)
+
+---
+
+### 📦 ৬. **Simple CLI-based Utilities তৈরি করা**
+
+* ✅ টুডু লিস্ট (todo.sh)
+* ✅ calculator script (math operation)
+* ✅ password generator
+* ✅ CLI stopwatch / timer
+* ✅ random quote displayer (motivation.sh)
+
+---
+
+## 🧪 Beginner থেকে Intermediate Bash Projects (Practice Ideas)
+
+| নাম                    | কাজ                                                    |
+| ---------------------- | ------------------------------------------------------ |
+| 📦 `auto_backup.sh`    | নির্দিষ্ট ফোল্ডার zip করে অন্য ফোল্ডারে সেভ করা        |
+| 📂 `organize_files.sh` | Desktop এ `.png`, `.pdf` ইত্যাদি আলাদা ফোল্ডারে পাঠানো |
+| 🧹 `cleanup.sh`        | `/tmp`, `.log` ফাইল ক্লিন করে                          |
+| 📊 `disk_report.sh`    | Disk usage report তৈরি করে                             |
+| 🧾 `log_monitor.sh`    | system log ফাইল থেকে error খুঁজে highlight করা         |
+| 🌐 `website_status.sh` | ওয়েবসাইট অনলাইন আছে কিনা চেক করা                       |
+| 📋 `todo.sh`           | CLI-based to-do লিস্ট যেখানে add/remove/show করা যায়   |
+| 🔢 `calculator.sh`     | Add, subtract, multiply, divide CLI calculator         |
+
+---
+
+## 🛣️ এখন কীভাবে আগাবো?
+
+1. ✅ **প্রতিদিন একটা ছোট problem select করো**, যেমন "একটা ফোল্ডার organize করবো", আর সেটা solve করো Bash দিয়ে।
+2. ✅ GitHub-এ "bash script" বা "shell script utilities" সার্চ করে অন্যদের লেখা script গুলো পড়ো, বুঝে চেষ্টা করো।
+3. ✅ `man` command, `help`, `tldr`, আর `explainshell.com` ইউজ করে command এর behavior বুঝে practice করো।
+
+---
+
+## 🧭 Bonus: যদি তুমি নিশ্চিত না হও "কি ধরনের কাজ automate করবো?"
+
+তাহলে নিজের ল্যাপটপে প্রতিদিন যেসব কাজ বারবার করতে হয় (copying files, downloading, renaming, opening apps), সেগুলো লিস্ট করে দেখো। প্রতিটা task কে Bash দিয়ে কীভাবে automate করা যায় সেটা চিন্তা করো।
+
+---
+
+**Ready to start building something?**
+তুমি চাইলে আমি এখনি তোমাকে ১টা project idea দিয়ে দিতেই পারি এবং step by step guide করতেও পারি!
+
+🔧 উদাহরণ:
+
+> **auto\_backup.sh** project বানাতে চাও? নাকি `todo.sh`?
+
+বলো তুমি কোন ধরণের problem solve করতে আগ্রহী? CLI tool, File automation, Network tool, নাকি অন্য কিছু?
+---
+একদম ঠিক! তুমি এখন যেহেতু Bash-এর basics পারো, তাই এবার কিছু **beginner-friendly প্রকল্প (project)** করলেই নিজের স্কিল আরও শার্প হবে ✅
+এখানে আমি তোমাকে প্রথমে কিছু project idea দিচ্ছি, তারপর **২টা fully functional Bash script project লিখে দিচ্ছি** — যেগুলো তুমি নিজের সিস্টেমে চালিয়ে দেখতে পারবে।
+
+---
+
+## 🧠 Beginner-Friendly Bash Project Ideas (Automation & CLI Tools)
+
+| আইডিয়া নাম                 | কাজের বিবরণ                                                                         |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| 📂 `organize_files.sh`     | Desktop বা Downloads ফোল্ডার থেকে `.jpg`, `.pdf`, `.mp4` ফাইল আলাদা ফোল্ডারে পাঠানো |
+| 📋 `todo.sh`               | CLI-based to-do লিস্ট → নতুন কাজ add/remove/show                                    |
+| 🧮 `calculator.sh`         | যোগ, বিয়োগ, গুণ, ভাগ করার জন্য simple CLI calculator                                |
+| 📁 `folder_backup.sh`      | যেকোনো ফোল্ডারকে `.tar.gz` archive করে backup নেওয়া                                 |
+| 🧾 `log_filter.sh`         | `.log` ফাইল থেকে শুধু error বা warning লাইনগুলো বের করা                             |
+| ⏱️ `countdown.sh`          | টাইমার বা countdown tool                                                            |
+| 🔍 `file_search.sh`        | নির্দিষ্ট extension (e.g., `.txt`) এর ফাইল গুলো খুঁজে দেখানো                        |
+| 🌐 `website_checker.sh`    | ওয়েবসাইট অনলাইন আছে কিনা `ping` দিয়ে চেক করে রিপোর্ট দেখায়                          |
+| 🔑 `password_generator.sh` | random password জেনারেটর (length অনুযায়ী)                                           |
+
+---
+
+## ✅ Project 1: **organize\_files.sh**
+
+**কাজ:** বর্তমান ডিরেক্টরির `.jpg`, `.pdf`, `.txt` ফাইলগুলোকে আলাদা আলাদা ফোল্ডারে পাঠাবে।
+
+```bash
+#!/bin/bash
+
+# Target folders
+mkdir -p JPG PDF TXT
+
+# Move files based on extension
+for file in *.jpg; do
+  [ -f "$file" ] && mv "$file" JPG/
+done
+
+for file in *.pdf; do
+  [ -f "$file" ] && mv "$file" PDF/
+done
+
+for file in *.txt; do
+  [ -f "$file" ] && mv "$file" TXT/
+done
+
+echo "✅ Files organized successfully!"
+```
+
+### 🧪 কিভাবে চালাবে:
+
+1. `.sh` ফাইল হিসেবে সেভ করো → `organize_files.sh`
+2. Terminal-এ গিয়ে লিখো:
+
+```bash
+chmod +x organize_files.sh
+./organize_files.sh
+```
+
+---
+
+## ✅ Project 2: **todo.sh**
+
+**কাজ:** To-do list তৈরি করবে CLI থেকে। ফাইলের ভিতর save হবে কাজগুলো।
+
+```bash
+#!/bin/bash
+
+TODO_FILE="todo.txt"
+
+show_list() {
+  if [ ! -f "$TODO_FILE" ]; then
+    echo "📂 No todo list found!"
+    return
+  fi
+
+  echo "📝 Your To-Do List:"
+  nl -w2 -s'. ' "$TODO_FILE"
+}
+
+add_task() {
+  echo "$1" >> "$TODO_FILE"
+  echo "✅ Task added: $1"
+}
+
+remove_task() {
+  sed -i "${1}d" "$TODO_FILE"
+  echo "❌ Task #$1 removed"
+}
+
+# Command options
+case $1 in
+  add)
+    shift
+    add_task "$*"
+    ;;
+  remove)
+    remove_task "$2"
+    ;;
+  show)
+    show_list
+    ;;
+  *)
+    echo "📘 Usage:"
+    echo "./todo.sh add \"Your task here\""
+    echo "./todo.sh remove [task_number]"
+    echo "./todo.sh show"
+    ;;
+esac
+```
+
+### 🧪 কিভাবে চালাবে:
+
+```bash
+chmod +x todo.sh
+
+./todo.sh add "Learn Bash scripting"
+./todo.sh add "Build personal project"
+./todo.sh show
+./todo.sh remove 1
+./todo.sh show
+```
+
+---
+
+## 🎯 তোমার পরবর্তী করণীয়:
+
+1. উপরের স্ক্রিপ্ট দুটো চালাও ও বোঝার চেষ্টা করো কীভাবে কাজ করে।
+2. নিজে নিজে একটি নতুন extension যুক্ত করো `organize_files.sh` তে, যেমন `.mp3`.
+3. `todo.sh` এর ভিতরে একটি ফিচার যোগ করো যেমন `clear` option, যা সম্পূর্ণ list ডিলিট করে দেয়।
+
+---
+
+## 🔓 চাইলে আমি এগুলোর উপর ভিত্তি করে বড়ো স্কেল project বানিয়ে দিতে পারি:
+
+যেমন:
+
+* 🔐 Password manager (Bash + gpg)
+* 📦 Package installer (detect distro, install apps)
+* 🧠 Quiz game (CLI-based)
+* 📜 Note-taking CLI tool with date support
+
+**কোনটা করতে চাও পরেরটা?** বললেই শিখিয়ে দিবো + বানিয়ে দেখাবো ✅
+অসাধারণ! তুমি এখন **intermediate-level** এ Bash-এ চলে এসেছো — এখন আমরা এমন কিছু **প্রকল্প (projects)** করবো যেখানে থাকবে:
+
+✅ বাস্তব সমস্যা সমাধান
+✅ কিছুটা জটিলতা (loop, array, condition, file ops, string handling, argument parsing)
+✅ নতুন টুলের ব্যবহার (`getopts`, `curl`, `awk`, `crontab`, etc.)
+
+---
+
+## 🎯 আজকে আমি ৩টা **Intermediate-Level Project** পুরোপুরি তৈরি করে দেখাবো:
+
+1. **disk\_report.sh** → Disk usage checker & report generator
+2. **url\_status\_checker.sh** → Multiple websites এর status check
+3. **daily\_backup.sh** → Auto backup + timestamp + compression
+
+---
+
+## ✅ ১. `disk_report.sh` — **Disk Usage রিপোর্ট টুল**
+
+**লক্ষ্য:** ডিভাইসের ড্রাইভ/partition গুলোর ডিস্ক ইউজেজ percent-wise রিপোর্ট আকারে দেখাবে।
+
+```bash
+#!/bin/bash
+
+echo "🧾 Disk Usage Report (Generated on: $(date))"
+echo "---------------------------------------------"
+
+df -h | grep '^/dev/' | while read line; do
+  name=$(echo $line | awk '{print $1}')
+  size=$(echo $line | awk '{print $2}')
+  used=$(echo $line | awk '{print $3}')
+  avail=$(echo $line | awk '{print $4}')
+  usep=$(echo $line | awk '{print $5}')
+  mount=$(echo $line | awk '{print $6}')
+  
+  echo "📂 $mount ($name) — Used: $used/$size ($usep), Available: $avail"
+done
+```
+
+### 🚀 চালানোর নিয়ম:
+
+```bash
+chmod +x disk_report.sh
+./disk_report.sh
+```
+
+---
+
+## ✅ ২. `url_status_checker.sh` — **Multiple URL ping checker**
+
+**লক্ষ্য:** ১টা `.txt` ফাইলে রাখা ওয়েবসাইট গুলোর প্রতিটির `HTTP status` চেক করবে।
+
+📄 `urls.txt`:
+
+```
+https://google.com
+https://github.com
+https://invalidsite.abc
+```
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+FILE="urls.txt"
+
+if [ ! -f "$FILE" ]; then
+  echo "❌ File not found: $FILE"
+  exit 1
+fi
+
+echo "🌐 Website Status Checker (Started: $(date))"
+echo "---------------------------------------------"
+
+while read -r url; do
+  status=$(curl -o /dev/null -s -w "%{http_code}" "$url")
+  if [[ "$status" == "200" ]]; then
+    echo "✅ $url is UP (Status: $status)"
+  else
+    echo "❌ $url is DOWN or ERROR (Status: $status)"
+  fi
+done < "$FILE"
+```
+
+### 🚀 চালানোর নিয়ম:
+
+```bash
+chmod +x url_status_checker.sh
+./url_status_checker.sh
+```
+
+---
+
+## ✅ ৩. `daily_backup.sh` — **Auto compressed backup script**
+
+**লক্ষ্য:** যেকোনো ফোল্ডারকে `.tar.gz` আকারে timestamp সহ backup ফোল্ডারে রেখে দেবে।
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+SOURCE="$1"
+DEST="$HOME/backups"
+
+if [ ! -d "$SOURCE" ]; then
+  echo "❌ Source folder not found!"
+  exit 1
+fi
+
+mkdir -p "$DEST"
+
+timestamp=$(date +%Y%m%d_%H%M%S)
+backup_file="$DEST/backup_$(basename "$SOURCE")_$timestamp.tar.gz"
+
+tar -czf "$backup_file" "$SOURCE"
+
+echo "✅ Backup created: $backup_file"
+```
+
+### 🚀 চালানোর নিয়ম:
+
+```bash
+chmod +x daily_backup.sh
+./daily_backup.sh ~/Documents
+```
+
+---
+
+## 🌟 Bonus Challenge Ideas (নিজে করার জন্য):
+
+| Project Name         | Challenge                               |
+| -------------------- | --------------------------------------- |
+| `cpu_monitor.sh`     | CPU usage 80% এর বেশি হলে alert message |
+| `wifi_reconnect.sh`  | Wi-Fi disconnect হলে auto reconnect     |
+| `command_timer.sh`   | যেকোনো কমান্ড কত সময় লাগছে তা মাপা      |
+| `crypto_tracker.sh`  | `curl` + API দিয়ে BTC/ETH প্রাইস খোঁজা  |
+| `git_auto_commit.sh` | নির্দিষ্ট ফোল্ডারে auto commit + push   |
+
+---
+
+## ✅ এবার তুমি কী করতে পারো:
+
+* উপরের যেকোনো একটা স্ক্রিপ্ট নিজের মতো modify করো
+* নতুন ফিচার যোগ করো (e.g., log file লেখা, colors add করা, user input নেওয়া)
+* চাইলে আমি এগুলোকে "real-time CLI tool" এ রূপান্তর করতে দেখাতে পারি
+
+---
+
+**আরো project বানাতে চাও?**
+বলো তুমি কোন ধরণের জিনিস বানাতে চাও:
+
+📁 File tools | 🌐 Internet tools | 📊 Report tools | 🧠 Learning games | 🔐 Security tools
+
+তোমার আগ্রহ অনুযায়ী পরবর্তী project ideas বানিয়ে দিয়ে দিবো ✅
+তুমি যেহেতু সফটওয়্যার ডেভেলপমেন্ট শিখছো এবং এখন বাস্তব সমস্যা অনুযায়ী **useful automation projects** খুঁজছো — আমি তোমাকে এমন কিছু **Bash automation project** বানিয়ে দেখাচ্ছি যেগুলো একজন Developer বা Dev Learner প্রায়ই ব্যবহার করে থাকে।
+
+এসব স্ক্রিপ্ট:
+
+* **Time বাঁচাবে**
+* **ভুল কমাবে**
+* **Productivity বাড়াবে**
+* তোমাকে একজন “Smart Developer” হিসেবে গড়ে তুলবে
+
+---
+
+## 🧰 আজকে তোমাকে ৩টি Practical Automation Script করে দেখাবো:
+
+1. ✅ `project_boilerplate.sh` → নতুন প্রজেক্ট বানানোর ফোল্ডার ও ফাইল তৈরি
+2. ✅ `auto_git_push.sh` → Git-এ auto add + commit + push
+3. ✅ `env_checker.sh` → ডেভেলপমেন্ট এনভায়রনমেন্ট চেকলিস্ট checker
+
+---
+
+## ✅ ১. `project_boilerplate.sh`
+
+**কাজ:** তুমি যখন নতুন কোনো project শুরু করো (JS/React/Python etc.), তখন এক ক্লিকে starter files/folders বানাবে।
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+read -p "📁 Enter Project Name: " project
+mkdir -p "$project"/{src,tests,docs}
+touch "$project"/{README.md,.gitignore}
+echo "# $project" > "$project/README.md"
+echo "node_modules/" > "$project/.gitignore"
+
+echo "✅ Project structure created for '$project'"
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x project_boilerplate.sh
+./project_boilerplate.sh
+```
+
+📂 ফলাফল:
+
+```
+project-name/
+├── src/
+├── tests/
+├── docs/
+├── README.md
+└── .gitignore
+```
+
+---
+
+## ✅ ২. `auto_git_push.sh`
+
+**কাজ:** ১টি কমান্ডে Git-এ add + commit + push → নতুনদের জন্য বারবার command টাইপ না করে একটা script।
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+msg="$1"
+
+if [ -z "$msg" ]; then
+  echo "❌ Please provide a commit message"
+  echo "Usage: ./auto_git_push.sh \"your message here\""
+  exit 1
+fi
+
+git add .
+git commit -m "$msg"
+git push
+
+echo "✅ Code pushed with message: $msg"
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x auto_git_push.sh
+./auto_git_push.sh "Initial commit"
+```
+
+---
+
+## ✅ ৩. `env_checker.sh`
+
+**কাজ:** Developer এর system এ important tools/commands installed আছে কিনা চেক করা (Node, Git, Docker etc.)
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+TOOLS=("git" "node" "npm" "python3" "docker" "code")
+
+echo "🔍 Checking Development Environment..."
+echo "----------------------------------------"
+
+for tool in "${TOOLS[@]}"; do
+  if command -v $tool >/dev/null 2>&1; then
+    echo "✅ $tool is installed"
+  else
+    echo "❌ $tool is NOT installed"
+  fi
+done
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x env_checker.sh
+./env_checker.sh
+```
+
+---
+
+## ✅ Bonus Automation Ideas for Developers:
+
+| Project              | কাজ                                                   |
+| -------------------- | ----------------------------------------------------- |
+| `run_dev_server.sh`  | এক ক্লিকে local dev server চালানো (e.g., `npm start`) |
+| `setup_venv.sh`      | Python virtualenv create + activate + install req     |
+| `port_killer.sh`     | নির্দিষ্ট port (e.g., 3000) বন্ধ করে ফেলা             |
+| `git_log_summary.sh` | Git commit log থেকে short summary তৈরি                |
+| `npm_cleaner.sh`     | Node\_modules remove + cache clean                    |
+| `daily_dev_log.sh`   | প্রতিদিনকার কাজ `devlog.txt` এ লিখে রাখা              |
+
+---
+
+## ✍️ চাইলে personalized বানিয়ে দিতেও পারি
+
+বলো তুমি কোন language/framework (React, Python, Node.js, Laravel ইত্যাদি) নিয়ে কাজ করো, আমি সে অনুযায়ী script customize করে দিতে পারি।
+
+উদাহরণ:
+
+* `react_boilerplate.sh`
+* `python_api_scaffold.sh`
+* `docker_updater.sh`
+
+---
+
+### ✅ এখন বলো:
+
+* উপরের কোন script তোমার সবচেয়ে বেশি দরকারি মনে হচ্ছে?
+* নাকি তুমি কোনো নির্দিষ্ট tool/framework নিয়ে Bash automation করতে চাও?
+
+আমি চাইলে পরবর্তী পর্যায়ে তোমাকে একটা **complete automation toolkit pack** বানিয়ে দিতে পারি ✨
+---
+তুমি যেহেতু সফটওয়্যার ডেভেলপমেন্ট শিখছো এবং এখন বাস্তব সমস্যা অনুযায়ী **useful automation projects** খুঁজছো — আমি তোমাকে এমন কিছু **Bash automation project** বানিয়ে দেখাচ্ছি যেগুলো একজন Developer বা Dev Learner প্রায়ই ব্যবহার করে থাকে।
+
+এসব স্ক্রিপ্ট:
+
+* **Time বাঁচাবে**
+* **ভুল কমাবে**
+* **Productivity বাড়াবে**
+* তোমাকে একজন “Smart Developer” হিসেবে গড়ে তুলবে
+
+---
+
+## 🧰 আজকে তোমাকে ৩টি Practical Automation Script করে দেখাবো:
+
+1. ✅ `project_boilerplate.sh` → নতুন প্রজেক্ট বানানোর ফোল্ডার ও ফাইল তৈরি
+2. ✅ `auto_git_push.sh` → Git-এ auto add + commit + push
+3. ✅ `env_checker.sh` → ডেভেলপমেন্ট এনভায়রনমেন্ট চেকলিস্ট checker
+
+---
+
+## ✅ ১. `project_boilerplate.sh`
+
+**কাজ:** তুমি যখন নতুন কোনো project শুরু করো (JS/React/Python etc.), তখন এক ক্লিকে starter files/folders বানাবে।
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+read -p "📁 Enter Project Name: " project
+mkdir -p "$project"/{src,tests,docs}
+touch "$project"/{README.md,.gitignore}
+echo "# $project" > "$project/README.md"
+echo "node_modules/" > "$project/.gitignore"
+
+echo "✅ Project structure created for '$project'"
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x project_boilerplate.sh
+./project_boilerplate.sh
+```
+
+📂 ফলাফল:
+
+```
+project-name/
+├── src/
+├── tests/
+├── docs/
+├── README.md
+└── .gitignore
+```
+
+---
+
+## ✅ ২. `auto_git_push.sh`
+
+**কাজ:** ১টি কমান্ডে Git-এ add + commit + push → নতুনদের জন্য বারবার command টাইপ না করে একটা script।
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+msg="$1"
+
+if [ -z "$msg" ]; then
+  echo "❌ Please provide a commit message"
+  echo "Usage: ./auto_git_push.sh \"your message here\""
+  exit 1
+fi
+
+git add .
+git commit -m "$msg"
+git push
+
+echo "✅ Code pushed with message: $msg"
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x auto_git_push.sh
+./auto_git_push.sh "Initial commit"
+```
+
+---
+
+## ✅ ৩. `env_checker.sh`
+
+**কাজ:** Developer এর system এ important tools/commands installed আছে কিনা চেক করা (Node, Git, Docker etc.)
+
+📜 **Script:**
+
+```bash
+#!/bin/bash
+
+TOOLS=("git" "node" "npm" "python3" "docker" "code")
+
+echo "🔍 Checking Development Environment..."
+echo "----------------------------------------"
+
+for tool in "${TOOLS[@]}"; do
+  if command -v $tool >/dev/null 2>&1; then
+    echo "✅ $tool is installed"
+  else
+    echo "❌ $tool is NOT installed"
+  fi
+done
+```
+
+### 🚀 চালানো:
+
+```bash
+chmod +x env_checker.sh
+./env_checker.sh
+```
+
+---
+
+## ✅ Bonus Automation Ideas for Developers:
+
+| Project              | কাজ                                                   |
+| -------------------- | ----------------------------------------------------- |
+| `run_dev_server.sh`  | এক ক্লিকে local dev server চালানো (e.g., `npm start`) |
+| `setup_venv.sh`      | Python virtualenv create + activate + install req     |
+| `port_killer.sh`     | নির্দিষ্ট port (e.g., 3000) বন্ধ করে ফেলা             |
+| `git_log_summary.sh` | Git commit log থেকে short summary তৈরি                |
+| `npm_cleaner.sh`     | Node\_modules remove + cache clean                    |
+| `daily_dev_log.sh`   | প্রতিদিনকার কাজ `devlog.txt` এ লিখে রাখা              |
+
+---
+
+## ✍️ চাইলে personalized বানিয়ে দিতেও পারি
+
+বলো তুমি কোন language/framework (React, Python, Node.js, Laravel ইত্যাদি) নিয়ে কাজ করো, আমি সে অনুযায়ী script customize করে দিতে পারি।
+
+উদাহরণ:
+
+* `react_boilerplate.sh`
+* `python_api_scaffold.sh`
+* `docker_updater.sh`
+
+---
+
+### ✅ এখন বলো:
+
+* উপরের কোন script তোমার সবচেয়ে বেশি দরকারি মনে হচ্ছে?
+* নাকি তুমি কোনো নির্দিষ্ট tool/framework নিয়ে Bash automation করতে চাও?
+
+আমি চাইলে পরবর্তী পর্যায়ে তোমাকে একটা **complete automation toolkit pack** বানিয়ে দিতে পারি ✨
