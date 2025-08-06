@@ -13,6 +13,4 @@ for file in *.pdf; do
     [ -f "${file}" ] && mv "${file}" PDF/
 done
 
-
-
 echo "All file moved successfully"
