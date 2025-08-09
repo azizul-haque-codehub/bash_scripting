@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DVD Logo Screensaver</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #stage {
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            background: #111;
+            cursor: pointer;
+        }
+
+        /* small control panel */
+        .panel {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            z-index: 30;
+            backdrop-filter: blur(4px);
+        }
+
+        .panel label {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .panel input[type="range"] {
+            vertical-align: middle;
+        }
+
+        .hint {
+            opacity: .7;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .container {
+            height: 100vh;
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            display: flex;
+            align-items: center;    
+
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="stage"></canvas>
+    <div class="container">
+        <h1>
+            This is Azizul Haque
+        </h1>
+    </div>
+    <div class="panel" style="display: none;">
+        <label>Speed<input id="speed" type="range" min="0.5" max="8" step="0.1" value="3"></label><br>
+        <label>Size<input id="size" type="range" min="40" max="220" step="2" value="120"></label>
+        <div class="hint">Click canvas to start/stop. Corner hit changes color.</div>
+    </div>
+
+    <script>
+        let alertVisible = false;
+
+        const screensaver = () => {
+            alertVisible = true;
+            document.querySelector("#stage").style.display = "block";
+            const canvas = document.getElementById('stage');
+            const ctx = canvas.getContext('2d', { alpha: false });
+
+            // resize canvas to full window device pixel ratio aware
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = Math.round(window.innerWidth * dpr);
+                canvas.height = Math.round(window.innerHeight * dpr);
+                canvas.style.width = window.innerWidth + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // config
+            const speedControl = document.getElementById('speed');
+            const sizeControl = document.getElementById('size');
+
+            let logo = {
+                w: parseFloat(sizeControl.value),   // box width
+                h: parseFloat(sizeControl.value) * 0.55, // box height (proportional)
+                x: 50,
+                y: 50,
+                vx: parseFloat(speedControl.value),
+                vy: parseFloat(speedControl.value),
+                color: randomColor(),
+                text: 'Azizul',
+                paused: false
+            };
+
+            // random color generator (pleasant palette)
+            function randomColor() {
+                // choose bright saturation colors
+                const h = Math.floor(Math.random() * 360);
+                const s = 70 + Math.random() * 20;
+                const l = 45 + Math.random() * 10;
+                return `hsl(${h} ${s}% ${l}%)`;
+            }
+
+            // update from controls
+            speedControl.addEventListener('input', () => {
+                const sp = parseFloat(speedControl.value);
+                // preserve direction, update magnitude while keeping sign
+                logo.vx = Math.sign(logo.vx) * sp;
+                logo.vy = Math.sign(logo.vy) * sp;
+            });
+            sizeControl.addEventListener('input', () => {
+                logo.w = parseFloat(sizeControl.value);
+                logo.h = logo.w * 0.55;
+            });
+
+            // initialize center-ish and random direction
+            function initPosition() {
+                logo.x = Math.max(10, (canvas.width / (window.devicePixelRatio || 1) - logo.w) * Math.random());
+                logo.y = Math.max(10, (canvas.height / (window.devicePixelRatio || 1) - logo.h) * Math.random());
+                const s = parseFloat(speedControl.value);
+                logo.vx = (Math.random() < 0.5 ? -1 : 1) * s;
+                logo.vy = (Math.random() < 0.5 ? -1 : 1) * s;
+            }
+            initPosition();
+
+            // draw one frame
+            function draw() {
+                // background (solid to reduce trails)
+                ctx.fillStyle = '#111';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // draw rounded rectangle for logo
+                const x = logo.x, y = logo.y, w = logo.w, h = logo.h;
+                const r = Math.min(12, h * 0.18);
+
+                ctx.beginPath();
+                roundedRectPath(ctx, x, y, w, h, r);
+                ctx.fillStyle = logo.color;
+                ctx.fill();
+
+                // stroke
+                ctx.lineWidth = Math.max(2, Math.floor(h * 0.06));
+                ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+                ctx.stroke();
+
+                // text
+                ctx.fillStyle = '#fff';
+                ctx.font = `bold ${Math.floor(h * 0.6)}px system-ui, sans-serif`;
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.fillText(logo.text, x + w / 2, y + h / 2);
+            }
+
+            // rounded rect helper
+            function roundedRectPath(ctx, x, y, w, h, r) {
+                ctx.moveTo(x + r, y);
+                ctx.arcTo(x + w, y, x + w, y + h, r);
+                ctx.arcTo(x + w, y + h, x, y + h, r);
+                ctx.arcTo(x, y + h, x, y, r);
+                ctx.arcTo(x, y, x + w, y, r);
+                ctx.closePath();
+            }
+
+            // animation loop
+            let last = performance.now();
+            function step(now) {
+                const dt = Math.min(40, now - last) / 1000; // seconds, clamp for stability
+                last = now;
+                if (!logo.paused) {
+                    updatePosition(dt);
+                }
+                draw();
+                requestAnimationFrame(step);
+            }
+
+            // detect wall collisions & corner hit
+            function updatePosition(dt) {
+                logo.x += logo.vx * 60 * dt; // scale to feel right across devices
+                logo.y += logo.vy * 60 * dt;
+
+                const W = canvas.width / (window.devicePixelRatio || 1);
+                const H = canvas.height / (window.devicePixelRatio || 1);
+
+                let hitX = false, hitY = false;
+
+                if (logo.x <= 0) {
+                    logo.x = 0;
+                    logo.vx = Math.abs(logo.vx);
+                    hitX = true;
+                } else if (logo.x + logo.w >= W) {
+                    logo.x = W - logo.w;
+                    logo.vx = -Math.abs(logo.vx);
+                    hitX = true;
+                }
+
+                if (logo.y <= 0) {
+                    logo.y = 0;
+                    logo.vy = Math.abs(logo.vy);
+                    hitY = true;
+                } else if (logo.y + logo.h >= H) {
+                    logo.y = H - logo.h;
+                    logo.vy = -Math.abs(logo.vy);
+                    hitY = true;
+                }
+
+                // if both X and Y hit in same frame -> corner hit
+                if (hitX && hitY) {
+                    // change to a new random color
+                    logo.color = randomColor();
+                    // tiny bounce speed up for fun (capped)
+                    logo.vx *= 1.05;
+                    logo.vy *= 1.05;
+                }
+            }
+
+            // pause/resume on click
+            canvas.addEventListener('click', () => {
+                // logo.paused = !logo.paused;
+            });
+
+            // double-click to reset position and color
+            canvas.addEventListener('dblclick', () => {
+                logo.color = randomColor();
+                initPosition();
+            });
+
+            // keyboard controls: space toggles, r resets
+            window.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    logo.paused = !logo.paused;
+                    e.preventDefault();
+                } else if (e.key.toLowerCase() === 'r') {
+                    initPosition();
+                    logo.color = randomColor();
+                }
+            });
+
+            requestAnimationFrame(step);
+
+            // expose for console tweaking if needed
+            window.DVD = { logo, initPosition };
+
+        };
+
+        (function () {
+            const TIMEOUT_MS = 6 * 1000; // 6 seconds
+            let timer = null;
+
+            let alertWindow = null;
+
+            // ইউজারের activity রিসেট করার ফাংশন
+            function resetTimer() {
+                if (alertVisible) {
+                    document.querySelector("#stage").style.display = "none";
+                }
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(screensaver, TIMEOUT_MS);
+            }
+
+            // যেসব ইভেন্টে activity ধরা হবে
+            const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+            events.forEach(ev => window.addEventListener(ev, resetTimer, { passive: true }));
+
+            // প্রথমবার টাইমার শুরু
+            resetTimer();
+        })();
+
+
+    </script>
+</body>
+
+</html>
